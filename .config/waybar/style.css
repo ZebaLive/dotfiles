@@ -1,4 +1,4 @@
-@import "~/.config/waybar/macchiato.css";
+@import "macchiato.css";
 
 * {
   /* reference the color by using @color-name */
