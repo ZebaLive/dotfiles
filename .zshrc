@@ -76,3 +76,8 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
