@@ -1,3 +1,5 @@
+source .zsh.env
+
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config '~/zen.toml')"
 fi
@@ -40,7 +42,6 @@ alias php=docker_php
 alias docx=docker_exec
 alias cake=docker_cake
 alias composer=docker_composer
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias gl='git pull'
 alias gp='git push'
 alias ga='git add .'
@@ -51,6 +52,7 @@ alias gs='git status'
 alias gc='git checkout'
 alias gb='git rebase'
 
+# https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
 export DOCKER_CLI_HINTS=false
@@ -77,10 +79,13 @@ else
     start_agent;
 fi
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# https://github.com/zsh-users/zsh-syntax-highlighting
+source ${ZSH_SYNTAX_HIGHLIGHTING:-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}
+
 source ~/.zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# https://github.com/zsh-users/zsh-autosuggestions
+source ${ZSH_AUTOSUGGEST:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}
 
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
