@@ -1,5 +1,3 @@
-source $HOME/.zsh.env
-
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config '~/zen.toml')"
 fi
@@ -32,7 +30,7 @@ function docker_exec {
 function docker_composer {
     result=${PWD##*/} 
     GO="cd $result && php composer.phar ${@}"
-    AGENT='eval $(ssh-agent -s); ssh-add;'
+    AGENT='eval $(ssh-agent -s); ssh-add /root/.ssh;'
     docker exec -it local_webserver-php82 bash -c "$AGENT $GO"
     
     return $?
