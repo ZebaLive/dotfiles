@@ -30,7 +30,7 @@ function docker_exec {
 function docker_composer {
     result=${PWD##*/} 
     GO="cd $result && php composer.phar ${@}"
-    AGENT='eval $(ssh-agent -s); ssh-add /root/.ssh;'
+    AGENT='eval $(ssh-agent -s); ssh-add ' + "${DOCKER_SSH_KEY_LOCATION:-/root/.ssh/id_ed25519}" + ';'
     docker exec -it local_webserver-php82 bash -c "$AGENT $GO"
     
     return $?
