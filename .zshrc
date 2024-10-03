@@ -7,33 +7,61 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 function docker_php {
-    result=${PWD##*/} 
-    GO="cd $result && php ${@}"
-    docker exec -it local_webserver-php82 bash -c "$GO"
+    if [ -n "$(docker ps -f "name=local_webserver-php82" -f "status=running" -q )" ]; then
+        result=${PWD##*/} 
+        GO="cd $result && php ${@}"
+        docker exec -it local_webserver-php82 bash -c "$GO"
+    elif [ -n "$(docker ps -f "name=sst_webserver-php83 " -f "status=running" -q )" ]; then
+        GO="php ${@}"
+        docker exec -it sst_webserver-php83 bash -c "$GO"
+    else
+        echo "No running container found"
+    fi
     return $?
 }
 
 function docker_cake {
-    result=${PWD##*/} 
-    GO="cd $result && php ./bin/cake.php ${@}"
-    docker exec -it local_webserver-php82 bash -c "$GO"
+    if [ -n "$(docker ps -f "name=local_webserver-php82" -f "status=running" -q )" ]; then
+         result=${PWD##*/} 
+        GO="cd $result && php ./bin/cake.php ${@}"
+        docker exec -it local_webserver-php82 bash -c "$GO"
+    elif [ -n "$(docker ps -f "name=sst_webserver-php83 " -f "status=running" -q )" ]; then
+        GO="php ./bin/cake.php ${@}"
+        docker exec -it sst_webserver-php83 bash -c "$GO"
+    else
+        echo "No running container found"
+    fi
     return $?
 }
 
 function docker_exec {
-    result=${PWD##*/} 
-    GO="cd $result && ${@}"
-    docker exec -it local_webserver-php82 bash -c "$GO"
+    if [ -n "$(docker ps -f "name=local_webserver-php82" -f "status=running" -q )" ]; then
+        result=${PWD##*/} 
+        GO="cd $result && ${@}"
+        docker exec -it local_webserver-php82 bash -c "$GO"
+    elif [ -n "$(docker ps -f "name=sst_webserver-php83 " -f "status=running" -q )" ]; then
+        GO="${@}"
+        docker exec -it sst_webserver-php83 bash -c "$GO"
+    else
+        echo "No running container found"
+    fi
     return $?
 }
 
 function docker_composer {
-    result=${PWD##*/} 
     SSH_START='eval $(ssh-agent -s);'
     SSH_ADD="ssh-add ${DOCKER_SSH_KEY_LOCATION:-/root/.ssh/id_ed25519};"
-    GO="cd $result && php composer.phar ${@}"
-    docker exec -it local_webserver-php82 bash -c "$SSH_START $SSH_ADD $GO"
-    
+    if [ -n "$(docker ps -f "name=local_webserver-php82" -f "status=running" -q )" ]; then
+        result=${PWD##*/} 
+        GO="cd $result && php composer.phar ${@}"
+        docker exec -it local_webserver-php82 bash -c "$SSH_START $SSH_ADD $GO"
+    elif [ -n "$(docker ps -f "name=sst_webserver-php83 " -f "status=running" -q )" ]; then
+        GO="php composer.phar ${@}"
+        docker exec -it sst_webserver-php83 bash -c "$SSH_START $SSH_ADD $GO"
+    else
+        echo "No running container found"
+    fi
+   
     return $?
 }
 
