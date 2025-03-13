@@ -6,61 +6,80 @@ fi
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 function docker_php {
-    if [ -n "$(docker ps -f "name=local_webserver-php82" -f "status=running" -q )" ]; then
-        result=${PWD##*/} 
-        GO="cd $result && php ${@}"
-        docker exec -it local_webserver-php82 bash -c "$GO"
-    elif [ -n "$(docker ps -f "name=sst_webserver-php83 " -f "status=running" -q )" ]; then
-        GO="php ${@}"
-        docker exec -it sst_webserver-php83 bash -c "$GO"
+    result=${PWD##*/}
+    GO="cd $result && php ${@}"
+    if [ "$result" == "team.arcapay.com" ]; then
+        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
+            docker exec -it local-php82 bash -c "$GO"
+        else
+            echo "No running container found for php82"
+        fi
     else
-        echo "No running container found"
+        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
+            docker exec -it local-php83 bash -c "$GO"
+        else
+            echo "No running container found for php83"
+        fi
     fi
     return $?
 }
 
 function docker_cake {
-    if [ -n "$(docker ps -f "name=local_webserver-php82" -f "status=running" -q )" ]; then
-         result=${PWD##*/} 
-        GO="cd $result && php ./bin/cake.php ${@}"
-        docker exec -it local_webserver-php82 bash -c "$GO"
-    elif [ -n "$(docker ps -f "name=sst_webserver-php83 " -f "status=running" -q )" ]; then
-        GO="php ./bin/cake.php ${@}"
-        docker exec -it sst_webserver-php83 bash -c "$GO"
+    result=${PWD##*/}
+    GO="cd $result && php ./bin/cake.php ${@}"
+    if [ "$result" == "team.arcapay.com" ]; then
+        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
+            docker exec -it local-php82 bash -c "$GO"
+        else
+            echo "No running container found for php82"
+        fi
     else
-        echo "No running container found"
+        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
+            docker exec -it local-php83 bash -c "$GO"
+        else
+            echo "No running container found for php83"
+        fi
     fi
     return $?
 }
 
 function docker_exec {
-    if [ -n "$(docker ps -f "name=local_webserver-php82" -f "status=running" -q )" ]; then
-        result=${PWD##*/} 
-        GO="cd $result && ${@}"
-        docker exec -it local_webserver-php82 bash -c "$GO"
-    elif [ -n "$(docker ps -f "name=sst_webserver-php83 " -f "status=running" -q )" ]; then
-        GO="${@}"
-        docker exec -it sst_webserver-php83 bash -c "$GO"
+    result=${PWD##*/}
+    GO="cd $result && ${@}"
+    if [ "$result" == "team.arcapay.com" ]; then
+        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
+            docker exec -it local-php82 bash -c "$GO"
+        else
+            echo "No running container found for php82"
+        fi
     else
-        echo "No running container found"
+        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
+            docker exec -it local-php83 bash -c "$GO"
+        else
+            echo "No running container found for php83"
+        fi
     fi
     return $?
 }
 
 function docker_composer {
+    result=${PWD##*/}
+    GO="cd $result && php composer.phar ${@}"
     SSH_START='eval $(ssh-agent -s);'
     SSH_ADD="ssh-add ${DOCKER_SSH_KEY_LOCATION:-/root/.ssh/id_ed25519};"
-    if [ -n "$(docker ps -f "name=local_webserver-php82" -f "status=running" -q )" ]; then
-        result=${PWD##*/} 
-        GO="cd $result && php composer.phar ${@}"
-        docker exec -it local_webserver-php82 bash -c "$SSH_START $SSH_ADD $GO"
-    elif [ -n "$(docker ps -f "name=sst_webserver-php83 " -f "status=running" -q )" ]; then
-        GO="php composer.phar ${@}"
-        docker exec -it sst_webserver-php83 bash -c "$SSH_START $SSH_ADD $GO"
+    if [ "$result" == "team.arcapay.com" ]; then
+        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
+            docker exec -it local-php82 bash -c "$SSH_START $SSH_ADD $GO"
+        else
+            echo "No running container found for php82"
+        fi
     else
-        echo "No running container found"
+        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
+           docker exec -it local-php83 bash -c "$SSH_START $SSH_ADD $GO"
+        else
+            echo "No running container found for php83"
+        fi
     fi
-   
     return $?
 }
 
@@ -112,3 +131,7 @@ source ~/.zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source ${ZSH_AUTOSUGGEST:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}
+
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+eval "$(pyenv virtualenv-init -)"
