@@ -129,11 +129,12 @@ source ~/.zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 # https://github.com/zsh-users/zsh-autosuggestions
 source ${ZSH_AUTOSUGGEST:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}
 
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-eval "$(pyenv virtualenv-init -)"
+if [ -n "$PYENV_ROOT" ]; then
+    eval "$(pyenv init - bash)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
-if [ -n "$NVM_DIR" ] then
+if [ -n "$NVM_DIR" ]; then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
