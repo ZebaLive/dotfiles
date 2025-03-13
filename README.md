@@ -20,7 +20,7 @@ pacman -S stow
 
 ## Installation
 
-First, check out the dotfiles repo in your $HOME directory using git
+First, check out the dotfiles repo in your `$HOME` directory using git
 
 ```
 $ git clone git@github.com:ZebaLive/dotfiles.git
@@ -32,3 +32,8 @@ then use GNU stow to create symlinks
 ```
 $ stow .
 ```
+
+## ZSH
+
+Create/update `.zshenv` file in your `$HOME` directory and fill used variables as needed
+
