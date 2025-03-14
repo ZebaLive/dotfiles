@@ -5,7 +5,7 @@ fi
 function docker_php {
     result=${PWD##*/}
     GO="cd $result && php ${@}"
-    if [ "$result" eq "team.arcapay.com" ]; then
+    if [ "$result" = "team.arcapay.com" ]; then
         if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
             docker exec -it local-php82 bash -c "$GO"
         else
@@ -24,7 +24,7 @@ function docker_php {
 function docker_cake {
     result=${PWD##*/}
     GO="cd $result && php ./bin/cake.php ${@}"
-    if [ "$result" eq "team.arcapay.com" ]; then
+    if [ "$result" = "team.arcapay.com" ]; then
         if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
             docker exec -it local-php82 bash -c "$GO"
         else
@@ -43,7 +43,7 @@ function docker_cake {
 function docker_exec {
     result=${PWD##*/}
     GO="cd $result && ${@}"
-    if [ "$result" eq "team.arcapay.com" ]; then
+    if [ "$result" = "team.arcapay.com" ]; then
         if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
             docker exec -it local-php82 bash -c "$GO"
         else
@@ -64,7 +64,7 @@ function docker_composer {
     GO="cd $result && php composer.phar ${@}"
     SSH_START='eval $(ssh-agent -s);'
     SSH_ADD="ssh-add ${DOCKER_SSH_KEY_LOCATION:-/root/.ssh/id_ed25519};"
-    if [ "$result" eq "team.arcapay.com" ]; then
+    if [ "$result" = "team.arcapay.com" ]; then
         if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
             docker exec -it local-php82 bash -c "$SSH_START $SSH_ADD $GO"
         else
