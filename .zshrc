@@ -120,7 +120,7 @@ if [ -f "${SSH_ENV}" ]; then
         start_agent;
     }
 else
-    start_agent;
+    # start_agent;
 fi
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
