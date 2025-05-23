@@ -100,7 +100,8 @@ eval "$(zoxide init --cmd cd zsh)"
 
 export DOCKER_CLI_HINTS=false
 
-SSH_ENV="$HOME/.ssh/environment"
+# move to .zshenv
+#SSH_ENV="$HOME/.ssh/environment"
 
 # start the ssh-agent
 function start_agent {
