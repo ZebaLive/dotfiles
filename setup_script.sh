@@ -10,14 +10,15 @@ else
     exit 1
 fi
 
-git clone https://github.com/ZebaLive/dotfiles.git
-cd dotfiles
-stow .
-cd ..
 
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 curl -s https://ohmyposh.dev/install.sh | bash -s
+
+git clone https://github.com/ZebaLive/dotfiles.git
+cd dotfiles
+stow .
+cd ..
 
 # Set zsh as the default shell for the current user
 if command -v zsh >/dev/null 2>&1; then
