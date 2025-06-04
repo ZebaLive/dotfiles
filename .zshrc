@@ -141,3 +141,7 @@ if [ -n "$NVM_DIR" ]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+
+if command -v neofetch >/dev/null 2>&1 && [ -z "$TERM_PROGRAM" ]; then
+    neofetch
+fi
