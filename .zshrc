@@ -1,6 +1,3 @@
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config '~/zen.toml')"
-fi
 
 function docker_php {
     result=${PWD##*/}
@@ -81,31 +78,58 @@ function docker_composer {
     return $?
 }
 
-alias php=docker_php
-alias docx=docker_exec
-alias cake=docker_cake
-alias composer=docker_composer
-alias gl='git pull'
-alias gp='git push'
-alias ga='git add .'
-alias gf='git fetch'
-alias gm='git commit -m'
-alias gam='git commit -am'
-alias gs='git status'
-alias gc='git checkout'
-alias gb='git rebase'
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
+--color=fg:#c6d0f5,bg:#303446,matched:#414559,matched_bg:#eebebe,current:#c6d0f5,current_bg:#51576d,current_match:#303446,current_match_bg:#f2d5cf,spinner:#a6d189,info:#ca9ee6,prompt:#8caaee,cursor:#e78284,selected:#ea999c,header:#81c8be,border:#737994"
+
+export LANG=en_US.UTF-8
+export NVM_DIR="$HOME/.config/nvm"
+export QT_QPA_PLATFORM=wayland
+export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=Kvantum
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="code --wait"
+export TERMINAL=kitty
+export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 
 # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
-export DOCKER_CLI_HINTS=false
+# Custom aliases
+## Quick edit
+alias zshrc="nvim ~/.zshrc"
+alias hc="code --wait ~/.config/hypr/"
+## Drop-in replacements
+alias cat="bat"
+alias pcat="bat -p"
+alias l="lsd -lA --date relative"
+## Beauty ✨
+alias m="cmatrix"
+alias b="cbonsai --live"
+alias n="fastfetch"
+## Other
+alias icat="kitten icat"
+alias ls="lsd"
 
-# move to .zshenv
-#SSH_ENV="$HOME/.ssh/environment"
+alias php=docker_php
+alias docx=docker_exec
+alias cake=docker_cake
+alias composer=docker_composer
+
+# Functions
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # start the ssh-agent
 function start_agent {
-    echo "Initializing new SSH agent..."
     # spawn ssh-agent
     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
 	chmod 600 "${SSH_ENV}"
@@ -123,10 +147,12 @@ else
     # start_agent;
 fi
 
-# https://github.com/zsh-users/zsh-syntax-highlighting
+
+# eval "$(register-python-argcomplete pipx)"
+
 source ${ZSH_SYNTAX_HIGHLIGHTING:-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}
 
-source ~/.zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source ${ZSH_AUTOSUGGEST:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}
@@ -141,7 +167,10 @@ if [ -n "$NVM_DIR" ]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config '~/.config/oh-my-posh/zen.toml')"
+fi
 
-if command -v neofetch >/dev/null 2>&1 && [ -z "$TERM_PROGRAM" ]; then
-    neofetch
+if command -v fastfetch >/dev/null 2>&1 && [ -z "$TERM_PROGRAM" ]; then
+    fastfetch
 fi

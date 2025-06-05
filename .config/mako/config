@@ -1,0 +1,25 @@
+# Colors
+
+#font=Apple Color Emoji
+font=JetBrainsMono Nerd Font
+on-button-middle=dismiss-all
+default-timeout=1500
+
+background-color=#303446
+text-color=#c6d0f5
+border-color=#e78284
+progress-color=over #414559
+
+[urgency=high]
+border-color=#ef9f76
+
+[app-name=wp-vol]
+layer=overlay
+history=0
+anchor=top-center
+
+[mode=do-not-disturb]
+invisible=1
+
+[mode=do-not-disturb app-name=wp-vol]
+invisible=0

@@ -1,0 +1,3 @@
+#!/bin/bash
+# Simulate DBus call to open folder
+kitty -e yazi "$@"

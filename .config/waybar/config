@@ -1,0 +1,139 @@
+{
+  "layer": "top",
+  "position": "top",
+  "spacing": 4,
+  "margin-top": 5,
+  "margin-bottom": 0,
+  "margin-left": 5,
+  "margin-right": 5,
+
+  "modules-left": [
+    "custom/icon",
+    "hyprland/workspaces",
+    "hyprland/window",
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "backlight",
+    "wireplumber",
+    "hyprland/language",
+    "network",
+    "battery",
+    "tray",
+    "idle_inhibitor"
+//    "custom/power",
+  ],
+
+  "hyprland/language": {
+    "format": " {}"
+  },
+
+  "custom/icon": {
+    "format": "󰣇",
+    "on-click": "rofi -show drun",
+    "tooltip": false 
+  },
+
+  "clock": {
+		"format": "<b>󰥔  {:%H:%M   󰃭  %d.%m}</b> ",
+		//"format": "{:%a}",
+		"tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+                    "mode"          : "month",
+                    "format": {
+                              "months":     "<span color='#cdd6f4'><b>{}</b></span>",
+                              "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                              "weeks":      "<span color='#cdd6f4'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#cdd6f4'><b>{}</b></span>",
+                              "today":      "<span color='#f38ba8'><b>{}</b></span>"
+                              }
+                    },
+    },
+
+  "hyprland/window": {
+    "format": " {}",
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "󰈹 Firefox",
+      "(.*) — Zen Browser": "󰈹 Zen Browser",
+      "(.*) - nvim": " Neovim"
+    }
+  },
+
+  "hyprland/workspaces" : {
+      "on-click": "activate",
+      "active-only": false,
+      "all-outputs": true,
+      "format": "{icon} {name}",
+      "format-icons": {
+	      "urgent": "",
+	      "active": "",
+        "default": ""
+      },
+      "persistent-workspaces": {
+          "*": 3 
+      }       
+  },
+  
+  "backlight": {
+    "format": "{icon} <b>{percent}%</b>",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "tooltip": false,
+   },
+
+  "wireplumber": {
+    "format": "{icon} <b>{volume}%</b>",
+    "format-bluetooth": "{icon}  <b>{volume}%</b>",
+    "format-bluetooth-muted": "󰝟 ",
+    "format-muted": " 󰝟 ",
+    "format-icons": {
+      "headset": "",
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "tooltip": false,
+    "on-click": "pavucontrol",
+  },
+
+  "network": {
+    "interval": 30,
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 Wired",
+    "fomat-disconnected": "󱚵 Disconnected",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰂎", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+    "max-length": 25,
+    "tooltip": false,
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 15,
+  },
+
+   "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "󰈈 ",
+        "deactivated": "󰈉 "
+    },
+  },
+
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "rofi -show power-menu -modi \"power-menu:rofi-power-menu --choices=shutdown/reboot/logout/lockscreen/suspend\"",
+    "tooltip": false,
+  }
+}
