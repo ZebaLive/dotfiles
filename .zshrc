@@ -171,6 +171,8 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config '~/.config/oh-my-posh/zen.toml')"
 fi
 
+bindkey "^[[3~" delete-char
+
 if command -v fastfetch >/dev/null 2>&1 && [ -z "$TERM_PROGRAM" ]; then
     fastfetch
 fi
