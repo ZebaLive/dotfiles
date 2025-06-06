@@ -24,8 +24,8 @@
     "network",
     "battery",
     "tray",
-    "idle_inhibitor"
-//    "custom/power",
+    "idle_inhibitor",
+   "custom/power"
   ],
 
   "hyprland/language": {
