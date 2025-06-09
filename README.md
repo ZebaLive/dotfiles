@@ -22,7 +22,7 @@
 
 > Rofi configuration taken from [old commit in Catppuccin repo](https://github.com/catppuccin/rofi/tree/5350da41a11814f950c3354f090b90d4674a95ce/basic)
 
-> Wallpaper by [thaomaoh](https://store.thaomaoh.com/b/solace)
+> Wallpaper by [Bog](https://store.thaomaoh.com/b/solace)
 
 ## 🗃️ Dependencies
 
