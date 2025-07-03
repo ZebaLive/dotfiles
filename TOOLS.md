@@ -12,6 +12,8 @@
 
 - [webcamize](https://github.com/cowtoolz/webcamize)
 - [dysk](https://github.com/Canop/dysk)
+- [caligula](https://github.com/ifd3f/caligula)
+- [pastel](https://github.com/sharkdp/pastel)
 
 ## Dev tools
 
