@@ -28,6 +28,7 @@
 
 - [zsh](https://www.zsh.org) with [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) and [fsh](https://github.com/zdharma-continuum/fast-syntax-highlighting)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip) ([Arch package](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd/))
 - [lsd-rs](https://github.com/lsd-rs/lsd)
 - [bat](https://github.com/sharkdp/bat)
@@ -44,3 +45,5 @@
 - [WirePlumber](https://gitlab.freedesktop.org/pipewire/wireplumber/)
 - [mako](https://github.com/emersion/mako)
 - [Neovim](https://github.com/neovim/neovim)
+- [zoxide](https://github.com/ajeetdsouza/zoxide)
+- 
