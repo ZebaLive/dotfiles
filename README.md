@@ -46,4 +46,3 @@
 - [mako](https://github.com/emersion/mako)
 - [Neovim](https://github.com/neovim/neovim)
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
-- 
