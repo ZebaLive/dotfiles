@@ -4,19 +4,19 @@
 
 ## 🧩 Applications on screenshots
 
-| Category       | Application                                           |
-| -------------- | ----------------------------------------------------- |
-| Status Bar     | [Waybar](https://github.com/Alexays/Waybar)           |
-| Big Fetch      | [Neofetch](https://github.com/dylanaraps/neofetch)    |
-| Mini Fetch     | [pfetch-rs](https://github.com/Gobidev/pfetch-rs)     |
-| Bonsai Tree    | [cbonsai](https://gitlab.com/jallbrit/cbonsai)        |
-| File Manager   | [Yazi](https://github.com/sxyazi/yazi)                |
-| Terminal       | [kitty](https://github.com/kovidgoyal/kitty)          |
-| Neovim Config  | [LazyVim](https://github.com/LazyVim/LazyVim)         |
-| System Monitor | [btop](https://github.com/aristocratos/btop)          |
-| Music Player   | [Cassette](https://gitlab.gnome.org/Rirusha/Cassette) |
-| Launcher       | [rofi-wayland](https://github.com/lbonn/rofi)         |
-| Clock          | [Peaclock](https://github.com/octobanana/peaclock)    |
+| Category       | Application                                             |
+| -------------- | ------------------------------------------------------- |
+| Status Bar     | [Waybar](https://github.com/Alexays/Waybar)             |
+| Big Fetch      | [Fastfetch](https://github.com/fastfetch-cli/fastfetch) |
+| Mini Fetch     | [pfetch-rs](https://github.com/Gobidev/pfetch-rs)       |
+| Bonsai Tree    | [cbonsai](https://gitlab.com/jallbrit/cbonsai)          |
+| File Manager   | [Yazi](https://github.com/sxyazi/yazi)                  |
+| Terminal       | [kitty](https://github.com/kovidgoyal/kitty)            |
+| Neovim Config  | [LazyVim](https://github.com/LazyVim/LazyVim)           |
+| System Monitor | [btop](https://github.com/aristocratos/btop)            |
+| Music Player   | [Cassette](https://gitlab.gnome.org/Rirusha/Cassette)   |
+| Launcher       | [rofi-wayland](https://github.com/lbonn/rofi)           |
+| Clock          | [Peaclock](https://github.com/octobanana/peaclock)      |
 
 > Waybar configuration initially taken from [u/l_6174](https://reddit.com/user/l_6174)'s configs ([reddit post](https://redd.it/1colbol) and [dotfiles](https://github.com/l6174/hyprdots/tree/4eebb385b3cde0a5dfda15dd96d527382fa7a065))
 
