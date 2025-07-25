@@ -5,8 +5,9 @@
     selected-col: #303446;
     blue: #8caaee;
     red: #e78284;
+    mauve: #ca9ee6;
     fg-col: #c6d0f5;
-    fg-col2: #e78284;
+    fg-col2: #ca9ee6;
     grey: #737994;
 
     width: 600;
@@ -37,7 +38,7 @@ inputbar {
 }
 
 prompt {
-    background-color: @red;
+    background-color: @mauve;
     padding: 6px;
     text-color: @bg-col;
     border-radius: 3px;
@@ -94,7 +95,7 @@ button {
 
 button selected {
   background-color: @bg-col;
-  text-color: @red;
+  text-color: @mauve;
 }
 
 message {
@@ -107,6 +108,6 @@ message {
 textbox {
     padding: 6px;
     margin: 20px 0px 0px 20px;
-    text-color: @red;
+    text-color: @mauve;
     background-color: @bg-col-light;
 }
