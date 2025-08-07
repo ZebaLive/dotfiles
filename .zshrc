@@ -150,12 +150,12 @@ fi
 
 # eval "$(register-python-argcomplete pipx)"
 
-source ${ZSH_SYNTAX_HIGHLIGHTING:-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}
+source ${ZSH_SYNTAX_HIGHLIGHTING:-/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}
 
 source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-autosuggestions
-source ${ZSH_AUTOSUGGEST:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}
+source ${ZSH_AUTOSUGGEST:-/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh}
 
 if [ -n "$PYENV_ROOT" ]; then
     eval "$(pyenv init - bash)"

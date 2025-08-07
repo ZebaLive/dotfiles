@@ -10,7 +10,7 @@
   "modules-left": [
     "custom/icon",
     "hyprland/workspaces",
-    "hyprland/window",
+    "hyprland/window"
   ],
 
   "modules-center": [
@@ -33,14 +33,13 @@
   },
 
   "custom/icon": {
-    "format": "󰣇",
+    "format": "",
     "on-click": "rofi -show drun",
     "tooltip": false 
   },
 
   "clock": {
 		"format": "<b>󰥔  {:%H:%M   󰃭  %d.%m}</b> ",
-		//"format": "{:%a}",
 		"tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
                     "mode"          : "month",
@@ -51,7 +50,7 @@
                               "weekdays":   "<span color='#cdd6f4'><b>{}</b></span>",
                               "today":      "<span color='#f38ba8'><b>{}</b></span>"
                               }
-                    },
+                    }
     },
 
   "hyprland/window": {
@@ -59,7 +58,11 @@
     "rewrite": {
       "(.*) — Mozilla Firefox": "󰈹 Firefox",
       "(.*) — Zen Browser": "󰈹 Zen Browser",
-      "(.*) - nvim": " Neovim"
+      "(.*) - Google Chrome": "󰊯 Chrome",
+      "(.*) - nvim": " Neovim",
+      "Slack (.*)": "󰒱 Slack",
+      "kitty": " Kitty",
+      "(.*) - Visual Studio Code": "󰨞 VS Code"
     }
   },
 
@@ -74,14 +77,14 @@
         "default": ""
       },
       "persistent-workspaces": {
-          "*": 3 
+          "*": 1 
       }       
   },
   
   "backlight": {
     "format": "{icon} <b>{percent}%</b>",
     "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "tooltip": false,
+    "tooltip": false
    },
 
   "wireplumber": {
@@ -91,10 +94,10 @@
     "format-muted": " 󰝟 ",
     "format-icons": {
       "headset": "",
-      "default": ["󰕿", "󰖀", "󰕾"],
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "tooltip": false,
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol"
   },
 
   "network": {
@@ -104,7 +107,7 @@
     "fomat-disconnected": "󱚵 Disconnected",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disconnected": "Disconnected"
   },
 
   "battery": {
@@ -115,12 +118,12 @@
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂎", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
     "max-length": 25,
-    "tooltip": false,
+    "tooltip": false
   },
 
   "tray": {
     "icon-size": 16,
-    "spacing": 15,
+    "spacing": 15
   },
 
    "idle_inhibitor": {
@@ -128,12 +131,12 @@
     "format-icons": {
         "activated": "󰈈 ",
         "deactivated": "󰈉 "
-    },
+    }
   },
 
   "custom/power": {
     "format": "󰐥",
-    "on-click": "rofi -show power-menu -modi \"power-menu:rofi-power-menu --choices=shutdown/reboot/logout/lockscreen/suspend\"",
-    "tooltip": false,
+    "on-click": "rofi -show power-menu -modi \"power-menu:~/.local/bin/rofi-power-menu --choices=shutdown/reboot/logout/lockscreen/suspend\"",
+    "tooltip": false
   }
 }
