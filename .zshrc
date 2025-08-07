@@ -1,16 +1,19 @@
 
-function docker_php {
+# Container engine configuration - change to "docker" if needed
+CONTAINER_ENGINE="podman"
+
+function container_php {
     result=${PWD##*/}
     GO="cd $result && php ${@}"
     if [ "$result" = "team.arcapay.com" ]; then
-        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            docker exec -it local-php82 bash -c "$GO"
+        if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php82" -f "status=running" -q )" ]; then
+            ${CONTAINER_ENGINE} exec -it local-php82 bash -c "$GO"
         else
             echo "No running container found for php82"
         fi
     else
-        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            docker exec -it local-php83 bash -c "$GO"
+        if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
+            ${CONTAINER_ENGINE} exec -it local-php83 bash -c "$GO"
         else
             echo "No running container found for php83"
         fi
@@ -18,18 +21,18 @@ function docker_php {
     return $?
 }
 
-function docker_cake {
+function container_cake {
     result=${PWD##*/}
     GO="cd $result && php ./bin/cake.php ${@}"
     if [ "$result" = "team.arcapay.com" ]; then
-        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            docker exec -it local-php82 bash -c "$GO"
+        if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php82" -f "status=running" -q )" ]; then
+            ${CONTAINER_ENGINE} exec -it local-php82 bash -c "$GO"
         else
             echo "No running container found for php82"
         fi
     else
-        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            docker exec -it local-php83 bash -c "$GO"
+        if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
+            ${CONTAINER_ENGINE} exec -it local-php83 bash -c "$GO"
         else
             echo "No running container found for php83"
         fi
@@ -37,18 +40,18 @@ function docker_cake {
     return $?
 }
 
-function docker_exec {
+function container_exec {
     result=${PWD##*/}
     GO="cd $result && ${@}"
     if [ "$result" = "team.arcapay.com" ]; then
-        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            docker exec -it local-php82 bash -c "$GO"
+        if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php82" -f "status=running" -q )" ]; then
+            ${CONTAINER_ENGINE} exec -it local-php82 bash -c "$GO"
         else
             echo "No running container found for php82"
         fi
     else
-        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            docker exec -it local-php83 bash -c "$GO"
+        if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
+            ${CONTAINER_ENGINE} exec -it local-php83 bash -c "$GO"
         else
             echo "No running container found for php83"
         fi
@@ -56,21 +59,21 @@ function docker_exec {
     return $?
 }
 
-function docker_composer {
+function container_composer {
     result=${PWD##*/}
     GO="cd $result && php composer.phar ${@}"
     SSH_START='eval $(ssh-agent -s);'
     SSH_ADD="ssh-add ${DOCKER_SSH_KEY_LOCATION:-/root/.ssh/id_ed25519};"
     if [ "$result" = "team.arcapay.com" ]; then
-        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            docker exec -it local-php82 bash -c "$SSH_START $SSH_ADD $GO"
+        if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php82" -f "status=running" -q )" ]; then
+            ${CONTAINER_ENGINE} exec -it local-php82 bash -c "$SSH_START $SSH_ADD $GO"
         else
             echo "No running container found for php82"
         fi
     else
-        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
+        if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
             echo "running container found for php83"
-           docker exec -it local-php83 bash -c "$SSH_START $SSH_ADD $GO"
+           ${CONTAINER_ENGINE} exec -it local-php83 bash -c "$SSH_START $SSH_ADD $GO"
         else
             echo "No running container found for php83"
         fi
@@ -92,7 +95,7 @@ export EDITOR="code --wait"
 export TERMINAL=kitty
 export QT_STYLE_OVERRIDE=kvantum
 export QT_QPA_PLATFORMTHEME=qt5ct
-
+export GTK_THEME=Adwaita:dark
 
 # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init --cmd cd zsh)"
@@ -113,10 +116,10 @@ alias n="fastfetch"
 alias icat="kitten icat"
 alias ls="lsd"
 
-alias php=docker_php
-alias docx=docker_exec
-alias cake=docker_cake
-alias composer=docker_composer
+alias php=container_php
+alias docx=container_exec
+alias cake=container_cake
+alias composer=container_composer
 
 # Functions
 function y() {
