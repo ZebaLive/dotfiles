@@ -7,13 +7,13 @@ function container_php {
     GO="cd $result && php ${@}"
     if [ "$result" = "team.arcapay.com" ]; then
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            ${CONTAINER_ENGINE} exec -it local-php82 bash -c "$GO"
+            ${CONTAINER_ENGINE} exec -it --user developer local-php82 bash -c "$GO"
         else
             echo "No running container found for php82"
         fi
     else
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            ${CONTAINER_ENGINE} exec -it local-php83 bash -c "$GO"
+            ${CONTAINER_ENGINE} exec -it --user developer local-php83 bash -c "$GO"
         else
             echo "No running container found for php83"
         fi
@@ -26,13 +26,13 @@ function container_cake {
     GO="cd $result && php ./bin/cake.php ${@}"
     if [ "$result" = "team.arcapay.com" ]; then
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            ${CONTAINER_ENGINE} exec -it local-php82 bash -c "$GO"
+            ${CONTAINER_ENGINE} exec -it --user developer local-php82 bash -c "$GO"
         else
             echo "No running container found for php82"
         fi
     else
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            ${CONTAINER_ENGINE} exec -it local-php83 bash -c "$GO"
+            ${CONTAINER_ENGINE} exec -it --user developer local-php83 bash -c "$GO"
         else
             echo "No running container found for php83"
         fi
@@ -45,13 +45,13 @@ function container_exec {
     GO="cd $result && ${@}"
     if [ "$result" = "team.arcapay.com" ]; then
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            ${CONTAINER_ENGINE} exec -it local-php82 bash -c "$GO"
+            ${CONTAINER_ENGINE} exec -it --user developer local-php82 bash -c "$GO"
         else
             echo "No running container found for php82"
         fi
     else
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            ${CONTAINER_ENGINE} exec -it local-php83 bash -c "$GO"
+            ${CONTAINER_ENGINE} exec -it --user developer local-php83 bash -c "$GO"
         else
             echo "No running container found for php83"
         fi
@@ -63,17 +63,17 @@ function container_composer {
     result=${PWD##*/}
     GO="cd $result && php composer.phar ${@}"
     SSH_START='eval $(ssh-agent -s);'
-    SSH_ADD="ssh-add ${DOCKER_SSH_KEY_LOCATION:-/root/.ssh/id_ed25519};"
+    SSH_ADD="ssh-add ${DOCKER_SSH_KEY_LOCATION:-/home/developer/.ssh/bitbucket};"
     if [ "$result" = "team.arcapay.com" ]; then
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            ${CONTAINER_ENGINE} exec -it local-php82 bash -c "$SSH_START $SSH_ADD $GO"
+            ${CONTAINER_ENGINE} exec -it --user developer local-php82 bash -c "$SSH_START $SSH_ADD $GO"
         else
             echo "No running container found for php82"
         fi
     else
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
             echo "running container found for php83"
-           ${CONTAINER_ENGINE} exec -it local-php83 bash -c "$SSH_START $SSH_ADD $GO"
+           ${CONTAINER_ENGINE} exec -it --user developer local-php83 bash -c "$SSH_START $SSH_ADD $GO"
         else
             echo "No running container found for php83"
         fi
