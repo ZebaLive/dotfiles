@@ -150,7 +150,7 @@ window#waybar {
 
 /* ------ Custom Modules ------ */
 #custom-icon {
-  font-size: 18px;
+  font-size: 14px;
   color: @blue;
   padding-right: 5px;
 }

@@ -33,7 +33,7 @@
   },
 
   "custom/icon": {
-    "format": "",
+    "format": "",
     "on-click": "rofi -show drun",
     "tooltip": false 
   },

@@ -96,13 +96,14 @@ export TERMINAL=kitty
 export QT_STYLE_OVERRIDE=kvantum
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GTK_THEME=Adwaita:dark
+export PODMAN_COMPOSE_WARNING_LOGS=0
 
 # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
 # Custom aliases
 ## Quick edit
-alias zshrc="nvim ~/.zshrc"
+alias zshrc="code --wait ~/.zshrc"
 alias hc="code --wait ~/.config/hypr/"
 ## Drop-in replacements
 alias cat="bat"
