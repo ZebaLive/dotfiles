@@ -47,4 +47,4 @@
 - [Neovim](https://github.com/neovim/neovim)
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
 - [hyprshot](https://github.com/Gustash/hyprshot)
-- [wl-screenrec)](https://github.com/russelltg/wl-screenrec)
+- [wl-screenrec](https://github.com/russelltg/wl-screenrec)
