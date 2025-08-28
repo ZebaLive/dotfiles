@@ -46,4 +46,5 @@
 - [mako](https://github.com/emersion/mako)
 - [Neovim](https://github.com/neovim/neovim)
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
-- [hyprshot](https://archlinux.org/packages/extra/any/hyprshot/)
+- [hyprshot](https://github.com/Gustash/hyprshot)
+- [wl-screenrec)](https://github.com/russelltg/wl-screenrec)

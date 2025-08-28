@@ -20,6 +20,7 @@
 #custom-spotify,
 #custom-icon,
 #custom-updates,
+#custom-screenrec,
 #language,
 #network,
 #battery,
@@ -152,7 +153,7 @@ window#waybar {
 #custom-icon {
   font-size: 14px;
   color: @blue;
-  padding-right: 5px;
+  padding-right: 6px;
 }
 
 #custom-power {
@@ -161,6 +162,28 @@ window#waybar {
   padding: 2px 9px;
   margin: 4px 2px;
   font-size: 15px;
+}
+
+#custom-screenrec {
+  background-color: @surface1;
+  padding: 2px 9px;
+  margin: 4px 2px;
+  font-size: 12px;
+}
+
+#custom-screenrec.recording {
+  color: @red;
+  animation: blink 2s steps(12) infinite alternate;
+}
+
+#custom-screenrec.not-recording {
+  color: transparent;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0.3;
+  }
 }
 
 #idle_inhibitor {

@@ -18,14 +18,14 @@
   ],
 
   "modules-right": [
-    "backlight",
+    "custom/screenrec",
     "wireplumber",
     "hyprland/language",
     "network",
     "battery",
     "tray",
     "idle_inhibitor",
-   "custom/power"
+    "custom/power"
   ],
 
   "hyprland/language": {
@@ -138,5 +138,13 @@
     "format": "󰐥",
     "on-click": "rofi -show power-menu -modi \"power-menu:~/.local/bin/rofi-power-menu --choices=shutdown/reboot/logout/lockscreen/suspend\"",
     "tooltip": false
+  },
+
+  "custom/screenrec": {
+    "exec": "~/.config/waybar/scripts/screenrec-status.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "~/.config/hypr/screenrec.sh stop",
+    "tooltip": true
   }
 }
