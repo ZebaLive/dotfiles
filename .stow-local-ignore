@@ -24,5 +24,8 @@ _darcs
 
 TOOLS.md
 
-wallpaper/
-sddm/
+wallpaper/default.png
+sddm
+
+install.sh
+install-arch.sh

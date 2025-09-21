@@ -7,7 +7,7 @@ default-timeout=1500
 
 background-color=#303446
 text-color=#c6d0f5
-border-color=#e78284
+border-color=#c6a0f6
 progress-color=over #414559
 
 [urgency=high]
