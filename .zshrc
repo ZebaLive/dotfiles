@@ -1,97 +1,13 @@
 
-function docker_php {
-    result=${PWD##*/}
-    GO="cd $result && php ${@}"
-    if [ "$result" = "team.arcapay.com" ]; then
-        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            docker exec -it local-php82 bash -c "$GO"
-        else
-            echo "No running container found for php82"
-        fi
-    else
-        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            docker exec -it local-php83 bash -c "$GO"
-        else
-            echo "No running container found for php83"
-        fi
-    fi
-    return $?
-}
-
-function docker_cake {
-    result=${PWD##*/}
-    GO="cd $result && php ./bin/cake.php ${@}"
-    if [ "$result" = "team.arcapay.com" ]; then
-        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            docker exec -it local-php82 bash -c "$GO"
-        else
-            echo "No running container found for php82"
-        fi
-    else
-        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            docker exec -it local-php83 bash -c "$GO"
-        else
-            echo "No running container found for php83"
-        fi
-    fi
-    return $?
-}
-
-function docker_exec {
-    result=${PWD##*/}
-    GO="cd $result && ${@}"
-    if [ "$result" = "team.arcapay.com" ]; then
-        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            docker exec -it local-php82 bash -c "$GO"
-        else
-            echo "No running container found for php82"
-        fi
-    else
-        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            docker exec -it local-php83 bash -c "$GO"
-        else
-            echo "No running container found for php83"
-        fi
-    fi
-    return $?
-}
-
-function docker_composer {
-    result=${PWD##*/}
-    GO="cd $result && php composer.phar ${@}"
-    SSH_START='eval $(ssh-agent -s);'
-    SSH_ADD="ssh-add ${DOCKER_SSH_KEY_LOCATION:-/root/.ssh/id_ed25519};"
-    if [ "$result" = "team.arcapay.com" ]; then
-        if [ -n "$(docker ps -f "name=local-php82" -f "status=running" -q )" ]; then
-            docker exec -it local-php82 bash -c "$SSH_START $SSH_ADD $GO"
-        else
-            echo "No running container found for php82"
-        fi
-    else
-        if [ -n "$(docker ps -f "name=local-php83" -f "status=running" -q )" ]; then
-            echo "running container found for php83"
-           docker exec -it local-php83 bash -c "$SSH_START $SSH_ADD $GO"
-        else
-            echo "No running container found for php83"
-        fi
-    fi
-    return $?
-}
-
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
 --color=fg:#c6d0f5,bg:#303446,matched:#414559,matched_bg:#eebebe,current:#c6d0f5,current_bg:#51576d,current_match:#303446,current_match_bg:#f2d5cf,spinner:#a6d189,info:#ca9ee6,prompt:#8caaee,cursor:#e78284,selected:#ea999c,header:#81c8be,border:#737994"
 
 export LANG=en_US.UTF-8
-export NVM_DIR="$HOME/.config/nvm"
 export QT_QPA_PLATFORM=wayland
-export QT_STYLE_OVERRIDE=kvantum
-export QT_QPA_PLATFORMTHEME=Kvantum
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="code --wait"
 export TERMINAL=kitty
-export QT_STYLE_OVERRIDE=kvantum
-export QT_QPA_PLATFORMTHEME=qt5ct
 
 
 # https://github.com/ajeetdsouza/zoxide
@@ -99,34 +15,19 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Custom aliases
 ## Quick edit
-alias zshrc="nvim ~/.zshrc"
+alias zshrc="code --wait ~/.zshrc"
 alias hc="code --wait ~/.config/hypr/"
 ## Drop-in replacements
 alias cat="bat"
 alias pcat="bat -p"
 alias l="lsd -lA --date relative"
-## Beauty ✨
+## Beauty 
 alias m="cmatrix"
 alias b="cbonsai --live"
 alias n="fastfetch"
 ## Other
 alias icat="kitten icat"
 alias ls="lsd"
-
-alias php=docker_php
-alias docx=docker_exec
-alias cake=docker_cake
-alias composer=docker_composer
-
-# Functions
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
 
 # start the ssh-agent
 function start_agent {

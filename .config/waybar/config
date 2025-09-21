@@ -57,10 +57,27 @@
   "hyprland/window": {
     "format": " {}",
     "rewrite": {
-      "(.*) — Mozilla Firefox": "󰈹 Firefox",
-      "(.*) — Zen Browser": "󰈹 Zen Browser",
-      "(.*) - nvim": " Neovim"
-    }
+      ".* - Mozilla Firefox": "󰉩  {}",
+      ".* - Google Chrome": "󰊢  {}",
+      ".* - Brave Browser": "󰊢  {}",
+      ".* - Microsoft Edge": "󰊢  {}",
+      ".* - Vivaldi": "󰊢  {}",
+      ".* - qutebrowser": "󰊢  {}",
+      ".* - Alacritty": "  {}",
+      ".* - Kitty": "  {}",
+      ".* - WezTerm": "  {}",
+      ".* - Yazi": "󰈔  {}",
+      ".* - Nautilus": "󰉓  {}",
+      ".* - Thunar": "󰉓  {}",
+      ".* - Dolphin": "󰉓  {}",
+      ".* - PCManFM": "󰉓  {}",
+      ".* - Code": "󰨞  {}",
+      ".* - Visual Studio Code": "󰨞  {}",
+      ".* - Neovim": "  {}",
+      ".* - Spotify": "󰎆  {}",
+      ".* - Discord": "󰙯  {}",
+      ".* - Slack": "󰒋  {}",
+      ".* - Zoom": "󰖍  {}"
   },
 
   "hyprland/workspaces" : {
@@ -74,7 +91,7 @@
         "default": ""
       },
       "persistent-workspaces": {
-          "*": 3 
+          "*": 1 
       }       
   },
   

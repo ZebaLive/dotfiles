@@ -121,7 +121,6 @@ install_official_packages() {
     
     # File management and utilities
     UTILITY_PACKAGES=(
-        "yazi"
         "lsd"
         "bat"
         "btop"

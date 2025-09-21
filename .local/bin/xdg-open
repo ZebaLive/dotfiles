@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# If the argument is a directory, open in Yazi
-if [ -d "$1" ]; then
-  kitty -e yazi "$1"
-else
-  # Fallback to system default xdg-open
-  /usr/bin/xdg-open "$1"
-fi

@@ -9,8 +9,7 @@
 | Status Bar     | [Waybar](https://github.com/Alexays/Waybar)             |
 | Big Fetch      | [Fastfetch](https://github.com/fastfetch-cli/fastfetch) |
 | Mini Fetch     | [pfetch-rs](https://github.com/Gobidev/pfetch-rs)       |
-| Bonsai Tree    | [cbonsai](https://gitlab.com/jallbrit/cbonsai)          |
-| File Manager   | [Yazi](https://github.com/sxyazi/yazi)                  |
+| Bonsai Tree    | [cbonsai](https://gitlab.com/jallbrit/cbonsai)          |             |
 | Terminal       | [kitty](https://github.com/kovidgoyal/kitty)            |
 | Neovim Config  | [LazyVim](https://github.com/LazyVim/LazyVim)           |
 | System Monitor | [btop](https://github.com/aristocratos/btop)            |

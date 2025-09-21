@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Yazi (Kitty)
-Exec=kitty -e yazi %F
-Terminal=true
-Type=Application
-Categories=System;FileManager;
-MimeType=inode/directory;
-Icon=utilities-terminal
