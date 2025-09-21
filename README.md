@@ -25,7 +25,7 @@
 
 ## 🗃️ Dependencies
 
-- [zsh](https://www.zsh.org) with [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+- [zsh](https://www.zsh.org) with [oh-my-posh](https://ohmyposh.dev/)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) and [fsh](https://github.com/zdharma-continuum/fast-syntax-highlighting)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [JetBrains Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip) ([Arch package](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd/))

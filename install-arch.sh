@@ -125,7 +125,6 @@ install_official_packages() {
         "bat"
         "btop"
         "fastfetch"
-        "neovim"
         "zoxide"
         "stow"
     )
@@ -144,16 +143,12 @@ install_official_packages() {
         "code"
     )
     
-    # Qt/Kvantum theming
-    THEME_PACKAGES=(
-        "kvantum"
-        "qt5ct"
-        "qt6ct"
-    )
-    
-    # Browser
-    BROWSER_PACKAGES=(
-        "librewolf-bin"  # Will be installed from AUR
+    OTHER_PACKAGES=(
+        "curl"
+        "wget"
+        "unzip"
+        "discord"
+        
     )
     
     # Combine all official packages
@@ -164,7 +159,7 @@ install_official_packages() {
         "${UTILITY_PACKAGES[@]}"
         "${FONT_PACKAGES[@]}"
         "${DEV_PACKAGES[@]}"
-        "${THEME_PACKAGES[@]}"
+        "${OTHER_PACKAGES[@]}"
     )
     
     # Install official packages
@@ -184,14 +179,11 @@ install_aur_packages() {
     
     AUR_PACKAGES=(
         "catppuccin-cursors-frappe"
-        "catppuccin-gtk-theme-frappe"
         "pfetch-rs"
         "cbonsai"
+        "brave-bin"
         "rofi-emoji"
-        "rofi-power-menu"
         "hyprshot"
-        "librewolf-bin"
-        "slack-desktop"
         "peaclock"
         "wofi"
     )
@@ -207,21 +199,13 @@ install_aur_packages() {
 }
 
 # Install Oh My Zsh
-install_oh_my_zsh() {
-    if [ ! -d "$HOME/.oh-my-zsh" ]; then
-        print_info "Installing Oh My Zsh..."
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-        print_success "Oh My Zsh installed"
+install_oh_my_posh() {
+    if [ ! -d "$HOME/.oh-my-posh" ]; then
+        print_info "Installing Oh My Posh..."
+        curl -s https://ohmyposh.dev/install.sh | bash -s
+        print_success "Oh My Posh installed"
     else
-        print_success "Oh My Zsh is already installed"
-    fi
-    
-    # Install zsh-fast-syntax-highlighting
-    if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/fast-syntax-highlighting" ]; then
-        print_info "Installing fast-syntax-highlighting..."
-        git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
-        ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
-        print_success "fast-syntax-highlighting installed"
+        print_success "Oh My Posh is already installed"
     fi
 }
 
@@ -243,6 +227,8 @@ setup_directories() {
     
     # Create wallpaper directory
     mkdir -p "$HOME/Wallpapers"
+    
+    cp "./wallpaper/default.png" "$HOME/Wallpapers/default.png"
     
     # Create other useful directories
     mkdir -p "$HOME/.local/bin"
@@ -288,7 +274,7 @@ main() {
     check_aur_helper
     install_official_packages
     install_aur_packages
-    install_oh_my_zsh
+    install_oh_my_posh
     enable_services
     setup_directories
     post_install_config
@@ -299,8 +285,6 @@ main() {
     echo "  1. Reboot your system"
     echo "  2. Use GNU Stow to deploy your dotfiles: stow ."
     echo "  3. Log out and select Hyprland from your display manager"
-    echo "  4. Configure wallpapers in ~/Wallpapers/ directory"
-    echo "  5. Customize themes with Kvantum Manager and lxappearance"
     
     print_warning "Note: Some applications may require additional configuration"
     print_warning "Check the README.md for any additional setup steps"
