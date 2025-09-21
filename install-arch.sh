@@ -117,6 +117,10 @@ install_official_packages() {
         "playerctl"
         "grim"
         "slurp"
+        "qt6-svg"
+        "qt6-declarative"
+        "qt5-quickcontrols2"
+        "sddm"
     )
     
     # File management and utilities
@@ -148,7 +152,6 @@ install_official_packages() {
         "wget"
         "unzip"
         "discord"
-        
     )
     
     # Combine all official packages
@@ -206,6 +209,57 @@ install_oh_my_posh() {
         print_success "Oh My Posh installed"
     else
         print_success "Oh My Posh is already installed"
+    fi
+}
+
+install_sddm_theme() {
+    print_info "Installing Catppuccin SDDM theme..."
+    
+    # Create themes directory if it doesn't exist
+    sudo mkdir -p /usr/share/sddm/themes
+    
+    if [ ! -d "/usr/share/sddm/themes/catppuccin-frappe-mauve" ]; then
+        # Copy theme to system directory
+        cd ./sddm
+        sudo cp -r catppuccin-frappe-mauve /usr/share/sddm/themes/
+        cd ..
+        print_success "Catppuccin theme files copied to /usr/share/sddm/themes/"
+    else
+        print_success "Catppuccin theme is already installed"
+    fi
+    
+    # Configure SDDM to use the theme
+    if [ ! -f "/etc/sddm.conf" ]; then
+        print_info "Creating /etc/sddm.conf..."
+        sudo tee /etc/sddm.conf > /dev/null << 'EOF'
+[Theme]
+Current=catppuccin-frappe-mauve
+EOF
+        print_success "Created /etc/sddm.conf with Catppuccin theme"
+    else
+        # Check if Theme section exists
+        if grep -q "^\[Theme\]" /etc/sddm.conf; then
+            # Update existing Theme section
+            if grep -q "^Current=" /etc/sddm.conf; then
+                sudo sed -i 's/^Current=.*/Current=catppuccin-frappe-mauve/' /etc/sddm.conf
+            else
+                # Add Current line to existing Theme section
+                sudo sed -i '/^\[Theme\]/a Current=catppuccin-frappe-mauve' /etc/sddm.conf
+            fi
+        else
+            # Add Theme section to the file
+            echo -e "\n[Theme]\nCurrent=catppuccin-frappe-mauve" | sudo tee -a /etc/sddm.conf > /dev/null
+        fi
+        print_success "Updated /etc/sddm.conf to use Catppuccin theme"
+    fi
+    
+    # Enable SDDM service
+    if ! systemctl is-enabled sddm &> /dev/null; then
+        print_info "Enabling SDDM service..."
+        sudo systemctl enable sddm
+        print_success "SDDM service enabled"
+    else
+        print_success "SDDM service is already enabled"
     fi
 }
 
@@ -275,6 +329,7 @@ main() {
     install_official_packages
     install_aur_packages
     install_oh_my_posh
+    install_sddm_theme
     enable_services
     setup_directories
     post_install_config
