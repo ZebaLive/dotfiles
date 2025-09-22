@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=NetworkManager Applet Hidden
+Exec=nm-applet --no-agent
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Comment=Start NetworkManager applet without system tray icon
