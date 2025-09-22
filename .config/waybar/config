@@ -47,30 +47,8 @@
     }
   },
   "hyprland/window": {
-    "format": " {}",
-    "rewrite": {
-      ".* - Mozilla Firefox": "󰉩  {}",
-      ".* - Google Chrome": "󰊢  {}",
-      ".* - Brave Browser": "󰊢  {}",
-      ".* - Microsoft Edge": "󰊢  {}",
-      ".* - Vivaldi": "󰊢  {}",
-      ".* - qutebrowser": "󰊢  {}",
-      ".* - Alacritty": "  {}",
-      ".* - Kitty": "  {}",
-      ".* - WezTerm": "  {}",
-      ".* - Yazi": "󰈔  {}",
-      ".* - Nautilus": "󰉓  {}",
-      ".* - Thunar": "󰉓  {}",
-      ".* - Dolphin": "󰉓  {}",
-      ".* - PCManFM": "󰉓  {}",
-      ".* - Code": "󰨞  {}",
-      ".* - Visual Studio Code": "󰨞  {}",
-      ".* - Neovim": "  {}",
-      ".* - Spotify": "󰎆  {}",
-      ".* - Discord": "󰙯  {}",
-      ".* - Slack": "󰒋  {}",
-      ".* - Zoom": "󰖍  {}"
-    }
+    "format": "  {}",
+    "rewrite": {}
   },
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -118,7 +96,8 @@
     "fomat-disconnected": "󱚵 Disconnected",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected"
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "rofi -show ronema -modi ronema:/home/zeba/.config/ronema/ronema.conf -theme /home/zeba/.config/ronema/themes/catppuccin.rasi"
   },
   "battery": {
     "states": {

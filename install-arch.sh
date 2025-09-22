@@ -144,7 +144,6 @@ install_official_packages() {
     DEV_PACKAGES=(
         "git"
         "base-devel"
-        "code"
     )
     
     OTHER_PACKAGES=(
@@ -189,6 +188,8 @@ install_aur_packages() {
         "hyprshot"
         "peaclock"
         "wofi"
+        "ags-hyprpanel-git"
+        "visual-studio-code-bin"
     )
     
     for package in "${AUR_PACKAGES[@]}"; do
