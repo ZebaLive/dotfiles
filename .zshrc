@@ -73,7 +73,7 @@ function container_composer {
     else
         if [ -n "$(${CONTAINER_ENGINE} ps -f "name=local-php83" -f "status=running" -q )" ]; then
             echo "running container found for php83"
-           ${CONTAINER_ENGINE} exec -it --user developer local-php83 bash -c "$SSH_START $SSH_ADD $GO"
+            ${CONTAINER_ENGINE} exec -it --user developer local-php83 bash -c "$SSH_START $SSH_ADD $GO"
         else
             echo "No running container found for php83"
         fi
@@ -106,7 +106,7 @@ eval "$(zoxide init --cmd cd zsh)"
 alias zshrc="code --wait ~/.zshrc"
 alias hc="code --wait ~/.config/hypr/"
 ## Drop-in replacements
-alias cat="bat"
+alias cat="bat --paging=never"
 alias pcat="bat -p"
 alias l="lsd -lA --date relative"
 ## Beauty ✨
@@ -124,12 +124,12 @@ alias composer=container_composer
 
 # Functions
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 # start the ssh-agent
@@ -143,8 +143,8 @@ function start_agent {
 
 # Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
-     . "${SSH_ENV}" > /dev/null
-     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    . "${SSH_ENV}" > /dev/null
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
         start_agent;
     }
 else
@@ -172,7 +172,7 @@ if [ -n "$NVM_DIR" ]; then
 fi
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config '~/.config/oh-my-posh/zen.toml')"
+    eval "$(oh-my-posh init zsh --config '~/.config/oh-my-posh/zen.toml')"
 fi
 
 bindkey "^[[3~" delete-char
