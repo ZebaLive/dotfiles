@@ -20,7 +20,7 @@ alias hc="code --wait ~/.config/hypr/"
 alias cat="bat"
 alias pcat="bat -p"
 alias l="lsd -lA --date relative"
-## Beauty 
+## Beauty
 alias m="cmatrix"
 alias b="cbonsai --live"
 alias n="fastfetch"
@@ -39,8 +39,8 @@ function start_agent {
 
 # Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
-     . "${SSH_ENV}" > /dev/null
-     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    . "${SSH_ENV}" > /dev/null
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
         start_agent;
     }
 else
@@ -52,7 +52,7 @@ fi
 
 source ${ZSH_SYNTAX_HIGHLIGHTING:-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}
 
-source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source ~/.config/zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source ${ZSH_AUTOSUGGEST:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}
@@ -68,7 +68,7 @@ if [ -n "$NVM_DIR" ]; then
 fi
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config '~/.config/oh-my-posh/zen.toml')"
+    eval "$(oh-my-posh init zsh --config '~/.config/oh-my-posh/zen.toml')"
 fi
 
 bindkey "^[[3~" delete-char
