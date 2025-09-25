@@ -87,15 +87,9 @@ export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
 
 export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.config/nvm"
-export QT_QPA_PLATFORM=wayland
-export QT_STYLE_OVERRIDE=kvantum
-export QT_QPA_PLATFORMTHEME=Kvantum
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="code --wait"
 export TERMINAL=kitty
-export QT_STYLE_OVERRIDE=kvantum
-export QT_QPA_PLATFORMTHEME=qt5ct
-export GTK_THEME=Adwaita:dark
 export PODMAN_COMPOSE_WARNING_LOGS=0
 
 # https://github.com/ajeetdsouza/zoxide
@@ -156,7 +150,7 @@ fi
 
 source ${ZSH_SYNTAX_HIGHLIGHTING:-/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}
 
-source ~/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source ~/.config/zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-autosuggestions
 source ${ZSH_AUTOSUGGEST:-/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh}
