@@ -103,6 +103,7 @@ alias hc="code --wait ~/.config/hypr/"
 alias cat="bat --paging=never"
 alias pcat="bat -p"
 alias l="lsd -lA --date relative"
+alias vim="nvim"
 ## Beauty ✨
 alias m="cmatrix"
 alias b="cbonsai --live"
