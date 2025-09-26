@@ -1,20 +1,42 @@
 #!/bin/bash
 
-# Script to handle automatic monitor switching
-# When DP-4 (external monitor) is connected, disable laptop monitor
-# When DP-4 is disconnected, enable laptop monitor
+# Simple USB monitor orientation toggle script
+# One keybinding to auto-detect and toggle orientation
 
-# Get list of connected monitors
-CONNECTED_MONITORS=$(hyprctl monitors -j | jq -r '.[].name')
+LAPTOP_MONITOR="eDP-1"
+USB_MONITOR="DP-3"
+CONFIG_FILE="$HOME/.config/hypr/usb_monitor_orientation"
 
-# Check if external monitor DP-4 is connected
-if echo "$CONNECTED_MONITORS" | grep -q "DP-4"; then
-    echo "External monitor DP-4 detected. Disabling laptop monitor eDP-1."
-    # Configure external monitor as primary and disable laptop monitor
-    hyprctl keyword monitor "DP-4,2560x1440@144,0x0,1"
-    hyprctl keyword monitor "eDP-1,disable"
+# Default to vertical if no config exists
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "vertical" > "$CONFIG_FILE"
+fi
+
+# Check if USB monitor is connected
+if ! hyprctl monitors -j | jq -r '.[].name' | grep -q "^${USB_MONITOR}$"; then
+    echo "USB monitor not connected"
+    exit 0
+fi
+
+# Toggle orientation
+CURRENT_ORIENTATION=$(cat "$CONFIG_FILE")
+if [ "$CURRENT_ORIENTATION" = "vertical" ]; then
+    NEW_ORIENTATION="horizontal"
+    TRANSFORM="0"
 else
-    echo "External monitor DP-4 not detected. Enabling laptop monitor eDP-1."
-    # Enable laptop monitor when external monitor is not present
-    hyprctl keyword monitor "eDP-1,2880x1920@120,0x0,2"
+    NEW_ORIENTATION="vertical"
+    TRANSFORM="3"
+fi
+
+# Save new orientation
+echo "$NEW_ORIENTATION" > "$CONFIG_FILE"
+
+# Apply monitor configuration
+echo "Setting USB monitor to $NEW_ORIENTATION orientation"
+hyprctl keyword monitor "$LAPTOP_MONITOR,2880x1920@120,-2880x0,2"
+hyprctl keyword monitor "$USB_MONITOR,1920x1080@60,0x0,1,transform,$TRANSFORM"
+
+# Set wallpaper if script exists
+if [ -x ~/.config/hypr/scripts/wallpaper.sh ]; then
+    ~/.config/hypr/scripts/wallpaper.sh
 fi
