@@ -6,7 +6,7 @@
 
 | Category       | Application                                             |
 | -------------- | ------------------------------------------------------- |
-| Status Bar     | [Waybar](https://github.com/Alexays/Waybar)             |
+| Status Bar     | [HyprPanel](https://github.com/Jas-SinghFSU/HyprPanel)             |
 | Big Fetch      | [Fastfetch](https://github.com/fastfetch-cli/fastfetch) |
 | Mini Fetch     | [pfetch-rs](https://github.com/Gobidev/pfetch-rs)       |
 | Bonsai Tree    | [cbonsai](https://gitlab.com/jallbrit/cbonsai)          |
