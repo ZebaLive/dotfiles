@@ -79,3 +79,4 @@ fi
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
+# export LD_LIBRARY_PATH="/home/zeba/binaryninja:/home/zeba/binaryninja/plugins:$LD_LIBRARY_PATH"
