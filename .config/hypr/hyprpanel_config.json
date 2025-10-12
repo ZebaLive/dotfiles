@@ -1,0 +1,98 @@
+{
+  "bar.layouts": {
+    "0": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "clock",
+        "notifications"
+      ],
+      "right": [
+        "hypridle",
+        "hyprsunset",
+        "kbinput",
+        "bluetooth",
+        "network",
+        "volume",
+        "battery",
+        "systray"
+      ]
+    },
+    "1": {
+      "left": [
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "clock"
+      ],
+      "right": [
+        "notifications"
+      ]
+    }
+  },
+  "bar.customModules.storage.paths": [
+    "/"
+  ],
+  "theme.font.size": "1rem",
+  "theme.bar.transparent": true,
+  "theme.font.name": "JetBrainsMono Nerd Font",
+  "theme.font.label": "JetBrainsMono Nerd Font",
+  "theme.bar.outer_spacing": "0.25em",
+  "menus.clock.weather.location": "Kaunas",
+  "menus.clock.time.military": true,
+  "menus.clock.weather.enabled": false,
+  "menus.dashboard.powermenu.avatar.image": "/home/zeba/.face.icon",
+  "notifications.position": "top",
+  "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Firefox",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "firefox",
+  "menus.dashboard.shortcuts.left.shortcut2.icon": "",
+  "menus.dashboard.shortcuts.left.shortcut2.tooltip": "VS Code",
+  "menus.dashboard.shortcuts.left.shortcut2.command": "code",
+  "menus.dashboard.shortcuts.left.shortcut1.icon": "󰈹",
+  "wallpaper.image": "/home/zeba/Pictures/Wallpapers/Forest 2.png",
+  "bar.workspaces.show_numbered": true,
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.showApplicationIcons": false,
+  "theme.bar.buttons.y_margins": "0.4em",
+  "menus.clock.time.hideSeconds": false,
+  "bar.clock.format": "%Y-%m-%d %k:%M:%S",
+  "menus.dashboard.directories.enabled": false,
+  "bar.customModules.hyprsunset.offLabel": "Off",
+  "bar.customModules.hyprsunset.onLabel": "On",
+  "theme.bar.buttons.modules.hyprsunset.spacing": "0.45em",
+  "bar.customModules.hyprsunset.label": false,
+  "bar.customModules.hypridle.label": false,
+  "bar.customModules.hyprsunset.temperature": "6000k",
+  "bar.customModules.hypridle.offIcon": "󰒳",
+  "bar.customModules.hypridle.onIcon": "󰒲",
+  "bar.network.showWifiInfo": true,
+  "theme.bar.buttons.network.enableBorder": false,
+  "wallpaper.enable": true,
+  "bar.customModules.cpu.icon": "",
+  "theme.bar.buttons.modules.cpu.enableBorder": false,
+  "scalingPriority": "hyprland",
+  "bar.workspaces.numbered_active_indicator": "highlight",
+  "bar.workspaces.workspaces": 0,
+  "bar.launcher.autoDetectIcon": true,
+  "bar.windowtitle.title_map": [
+    [
+      "chrome-music.youtube.com__*",
+      "",
+      "Youtube Music"
+    ]
+  ],
+  "bar.windowtitle.custom_title": true,
+  "bar.windowtitle.class_name": true,
+  "bar.autoHide": "fullscreen",
+  "theme.bar.floating": false,
+  "theme.bar.menus.monochrome": false,
+  "wallpaper.pywal": false,
+  "theme.bar.buttons.enableBorders": false,
+  "theme.bar.buttons.borderSize": "0.05em",
+  "menus.clock.weather.unit": "metric"
+}
