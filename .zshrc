@@ -1,6 +1,6 @@
 
 # Container engine configuration - change to "docker" if needed
-CONTAINER_ENGINE="podman"
+CONTAINER_ENGINE="docker"
 
 function container_php {
     result=${PWD##*/}
